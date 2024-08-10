@@ -1,31 +1,46 @@
 #include "game_manager.h"
+#include "ai_engine.h"
 #include <iostream>
-
-GameManager::GameManager(Board &board) : board(board) {}
 
 void GameManager::startGame()
 {
     while (!board.isGameOver())
     {
         board.printBoard();
-        playerTurn();
-        if (board.isGameOver())
-            break;
-        aiTurn();
+        if (currentPlayer == 0)
+        {
+            std::cout << "White's turn. Enter move (e.g., e2e4): ";
+            std::string move;
+            std::cin >> move;
+
+            int startRow = 8 - (move[1] - '0');
+            int startCol = move[0] - 'a';
+            int endRow = 8 - (move[3] - '0');
+            int endCol = move[2] - ‘a’;
+
+            if (board.isMoveLegal(startRow, startCol, endRow, endCol))
+            {
+                board.movePiece(startRow, startCol, endRow, endCol);
+                switchPlayer();
+            }
+            else
+            {
+                std::cout << "Illegal move. Try again.\n";
+            }
+        }
+        else
+        {
+            AIEngine ai(3);
+            std::pair<int, int> bestMove = ai.chooseBestMove(board, currentPlayer);
+            board.movePiece(bestMove.first / 8, bestMove.first % 8, bestMove.second / 8, bestMove.second % 8);
+            switchPlayer();
+        }
     }
+
+    std::cout << "Game over!\n";
 }
 
-void GameManager::playerTurn()
+void GameManager::switchPlayer()
 {
-    int startRow, startCol, endRow, endCol;
-    std::cout << "Enter your move (startRow startCol endRow endCol): ";
-    std::cin >> startRow >> startCol >> endRow >> endCol;
-    board.movePiece(startRow, startCol, endRow, endCol);
-}
-
-void GameManager::aiTurn()
-{
-    std::cout << "AI is thinking... " << std::endl;
-    Move bestMove = aiEngine.chooseBestMove(board, 3);
-    board.movePiece(bestMove.startRow, bestMove.startCol, bestMove.endRow, bestMove.endCol);
+    currentPlayer = 1 - currentPlayer;
 }

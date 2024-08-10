@@ -1,11 +1,10 @@
 #pragma once
 #include "board.h"
 #include <vector>
+#include <utility>
 
-struct Move
+class MoveGeneration
 {
-    int startRow, startCol;
-    int endRow, endCol;
+public:
+    std::vector<std::pair<int, int>> generateAllLegalMoves(const Board &board, int color);
 };
-
-std::vector<Move> generateMoves(const Board &board, int color);

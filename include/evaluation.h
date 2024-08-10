@@ -1,4 +1,11 @@
 #pragma once
 #include "board.h"
 
-int evaluateBoard(const Board &board);
+class Evaluation
+{
+public:
+    int evaluate(const Board &board, int color);
+
+private:
+    int pieceValue(char piece);
+};

@@ -1,12 +1,15 @@
 #pragma once
 #include "board.h"
-#include "move_generation.h"
 
 class AIEngine
 {
 public:
-    Move chooseBestMove(Board &board, int depth);
+    AIEngine(int depth) : searchDepth(depth) {}
+    std::pair<int, int> chooseBestMove(const Board &board, int color);
 
 private:
-    int minimax(Board &board, int depth, int alpha, int beta, bool isMaximizingPlayer);
+    int searchDepth;
+    int evaluateBoard(const Board &board, int color);
+    int minimax(Board &board, int depth, int alpha, int beta, int color);
+    std::vector<std::pair<int, int>> generateLegalMoves(const Board &board, int color);
 };

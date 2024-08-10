@@ -1,17 +1,14 @@
 #pragma once
 #include "board.h"
-#include "ai_engine.h"
 
 class GameManager
 {
 public:
-    GameManager(Board &board);
+    GameManager(Board &board) : board(board), currentPlayer(0) {}
     void startGame();
 
 private:
     Board &board;
-    AIEngine aiEngine;
-
-    void playerTurn();
-    void aiTurn();
+    int currentPlayer;
+    void switchPlayer();
 };
