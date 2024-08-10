@@ -57,3 +57,7 @@ White's turn. Enter move (e.g., e2e4): e2e4
 ```
 
 The game will continue until checkmate or stalemate.
+
+# Contributing
+
+Contributions are welcome! If you’d like to contribute to this project, feel free to submit a pull request or open an issue on the project’s GitHub repository.
