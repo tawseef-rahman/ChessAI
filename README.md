@@ -73,8 +73,9 @@ You can then play against the AI by entering your moves in standard algebraic no
 
 ### Example Game
 
-````White's turn. Enter move (e.g., e2e4): e2e4
-...```
+```bash
+White's turn. Enter move (e.g., e2e4): e2e4
+...
+```
 
 The game will continue until checkmate or stalemate.
-````
