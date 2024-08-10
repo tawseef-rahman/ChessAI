@@ -15,28 +15,6 @@ This project is a Chess AI simulation developed in C++. The simulation supports 
 
 - **Extendable Codebase**: The project is organized to allow easy extensions and improvements, such as implementing more sophisticated AI or enhancing the user interface.
 
-## Project Structure
-
-├── include
-│ ├── ai_engine.h
-│ ├── board.h
-│ ├── evaluation.h
-│ ├── game_manager.h
-│ ├── move_generation.h
-│ ├── piece.h
-│ └── piece_types.h
-├── src
-│ ├── ai_engine.cpp
-│ ├── board.cpp
-│ ├── evaluation.cpp
-│ ├── game_manager.cpp
-│ ├── main.cpp
-│ ├── move_generation.cpp
-│ ├── piece.cpp
-│ └── piece_types.cpp
-├── Makefile
-└── README.md
-
 ## Key Components
 
 - **`include/`**: Contains all header files defining classes, methods, and data structures used across the project.
